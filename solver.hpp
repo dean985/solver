@@ -20,55 +20,41 @@ namespace solver{
     };
 
     class ComplexVariable{
-        complex<double> c1;
-        complex<double> c2;
-        complex<double> c3;
+        complex<double> c;
+        
 
-    public:
-    ComplexVariable() : c1(0), c2(1.0), c3(0) {}
+        public:
+        ComplexVariable() {}
 
-    ComplexVariable(const complex<double> a1, const complex<double> a2, const complex<double> a3){
-      c1 = complex(a1); c2 = complex(a2); c3 = complex(a3);
-    }
-    //Getters
-    //TODO: Is there a need for getters ?
-//    const complex<double>& get_c1() const{
-//      return c1;
-//    }
-//    const complex<double>& get_c2() const{
-//      return c2;
-//    }
-//    const complex<double>& get_c3() const{
-//      return c3;
-//    }
+        // ComplexVariable(const complex<double> a1)
+        //Operator overloading
+        friend ComplexVariable operator+(const ComplexVariable& var, const complex<double>& c);
+        friend ComplexVariable operator+(const complex<double>& c, const ComplexVariable& var);
+        friend ComplexVariable operator+(const ComplexVariable& a, const ComplexVariable& b);
 
-    //Operator overloading
-    friend ComplexVariable operator+(const ComplexVariable& var, const complex<double>& c);
-    friend ComplexVariable operator+(const complex<double>& c, const ComplexVariable& var);
-    friend ComplexVariable operator+(const ComplexVariable& a, const ComplexVariable& b);
+        friend ComplexVariable operator-(const ComplexVariable& var, const complex<double>& c);
+        friend ComplexVariable operator-(const complex<double>& c ,const ComplexVariable& var);
+        friend ComplexVariable operator-(const ComplexVariable& a,const ComplexVariable& b);
 
-    friend ComplexVariable operator-(const ComplexVariable& var, const complex<double>& c);
-    friend ComplexVariable operator-(const complex<double>& c ,const ComplexVariable& var);
-    friend ComplexVariable operator-(const ComplexVariable& a,const ComplexVariable& b);
+        friend ComplexVariable operator*(const ComplexVariable& var, const complex<double>& c);
+        friend ComplexVariable operator*(const complex<double>& c ,const ComplexVariable& var);
+        friend ComplexVariable operator*(const ComplexVariable& a,const ComplexVariable& b);
 
-    friend ComplexVariable operator*(const ComplexVariable& var, const complex<double>& c);
-    friend ComplexVariable operator*(const complex<double>& c ,const ComplexVariable& var);
-    friend ComplexVariable operator*(const ComplexVariable& a,const ComplexVariable& b);
+        friend ComplexVariable operator/(const ComplexVariable& var, const complex<double> c);
+        friend ComplexVariable operator/(const ComplexVariable& a, const ComplexVariable& b);
 
-    friend ComplexVariable operator/(const ComplexVariable& var, const complex<double> c);
-    friend ComplexVariable operator/(const ComplexVariable& a, const ComplexVariable& b);
+        friend ComplexVariable operator^(const ComplexVariable& var, const complex<double> c);
 
-    friend ComplexVariable operator^(const ComplexVariable& var, const complex<double> c);
+        //ComplexVariable operator- () const;
 
-    //ComplexVariable operator- () const;
+        friend ComplexVariable operator==(const ComplexVariable& a,const ComplexVariable& b);
+        //TODO: if it's possible to cast any complex number to ComplexVariable, those aren't needed?
+        // friend ComplexVariable operator==(const complex<double> c,const ComplexVariable& c_var);
+        // friend ComplexVariable operator==(const ComplexVariable& c_var, const complex<double> c);
 
-    friend ComplexVariable operator==(const ComplexVariable& a,const ComplexVariable& b);
-    friend ComplexVariable operator==(const complex<double> c,const ComplexVariable& c_var);
-    friend ComplexVariable operator==(const ComplexVariable& c_var, const complex<double> c);
+        };
 
-    //Operator for nagative ComplexVariable
-    ComplexVariable operator -();
-    
-    };
 
+    double solve(ComplexVariable& var );
+    double solve(RealVariable& var);
 }
