@@ -17,7 +17,25 @@
 
 namespace solver{
     class RealVariable{
+        private double n;
+        
+        RealVariable()
+        {
+            this.n = 1;
+        }
+
     };
+    
+    int get_n()
+    {
+        return this.n;
+    }
+    
+    const RealVariable operator+(double x, RealVariable r)
+    {
+        return RealVariable(x + r.get_n());
+    }
+    
 
     class ComplexVariable{
     };
