@@ -19,18 +19,48 @@ namespace solver{
 
     class RealVariable {
         
-        private double n;
+        private: double n;
         
-        int get_n()
+        public:
+        RealVariable()
         {
-            return this.n;
+            n = 1;
         }
-    
-        const RealVariable operator+(double x, RealVariable r)
+        RealVariable(double x)
         {
-            return RealVariable(x + r.get_n());
+            n = x;
         }
+
     
+    
+    friend const RealVariable operator+(const double& x,const RealVariable& r);
+    friend const RealVariable operator+(const RealVariable& r,const double& x);
+
+    friend const RealVariable operator-(double x, RealVariable r);
+    friend const RealVariable operator-(RealVariable r, double x);
+    friend const RealVariable operator-(RealVariable r1,RealVariable r2);
+
+    // friend const RealVariable operator*(double x, RealVariable r);
+    // friend const RealVariable operator*(RealVariable r, double x);
+    // friend const RealVariable operator*(int x, RealVariable r);
+    friend const RealVariable operator*(RealVariable r);   
+    friend const RealVariable operator*(RealVariable r1,RealVariable r2);
+    
+
+    // friend const RealVariable operator/(double x, RealVariable r);
+    // friend const RealVariable operator/(RealVariable r, double x);
+    // friend const RealVariable operator/(int x, RealVariable r);
+    
+    //friend const RealVariable operator/(const RealVariable r);   
+    //friend const RealVariable operator/(const RealVariable r1,RealVariable r2);
+    
+    
+    friend const RealVariable operator == (const RealVariable& r1,const RealVariable& r2);
+    friend const RealVariable operator == (const RealVariable& r1,const double& r2);
+
+
+    friend const RealVariable operator^(RealVariable r1,int i);
+    friend ostream& operator<< (ostream& os, const RealVariable& r);
 
 
     };
@@ -72,6 +102,21 @@ namespace solver{
         };
 
 
+
     double solve(ComplexVariable& var );
-    double solve(RealVariable& var);
+    double solve(RealVariable var);
+
+/**
+ * 
+ * operators for both Real and complex
+ * 
+ * */
+ 
+  const RealVariable operator+(ComplexVariable c,RealVariable r);
+  const RealVariable operator-(ComplexVariable c,RealVariable r);
+  const RealVariable operator*(ComplexVariable c,RealVariable r);
+  const RealVariable operator/(ComplexVariable c,RealVariable r);
+
 }
+
+

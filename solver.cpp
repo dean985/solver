@@ -5,7 +5,80 @@ using namespace std;
 namespace solver{
 
 
-double solve(RealVariable& ) {return 1.1;}
+double solve(const RealVariable x ) {return 1.1;}
+
+
+/*
+ *Real Varible func implementetion 
+ *
+ */
+
+    const RealVariable operator+(const RealVariable& r1,const double& x)
+    {
+        return RealVariable((r1.n)+x-1);
+    }
+    const RealVariable operator+(const double& x,const RealVariable& r1)
+    {
+        return RealVariable((r1.n)+x-1);
+    }
+    
+    const RealVariable operator*(RealVariable r1,RealVariable r2)
+    {
+        return RealVariable();
+
+    }
+    const RealVariable operator*(RealVariable r)
+    {
+        return RealVariable();
+    }
+
+    const RealVariable operator-(double x, RealVariable r)
+    {
+        return RealVariable();
+    }
+    const RealVariable operator-(RealVariable r, double x)
+    {
+        return RealVariable();    
+    }
+    const RealVariable operator-(RealVariable r1,RealVariable r2)
+    {
+        return RealVariable();    
+    }
+    
+    
+    // const RealVariable operator/(RealVariable r)
+    // {
+    //     return RealVariable();
+    // }
+    // const RealVariable operator/(RealVariable r1,RealVariable r2)
+    // {
+    //     return RealVariable();
+    // }
+
+    const RealVariable operator==(const RealVariable& r1,const RealVariable& r2)
+    {
+        return RealVariable();
+
+    }
+    
+    const RealVariable operator==(const RealVariable& r1,const double& r2)
+    {
+        return RealVariable();
+    }
+
+    const RealVariable operator^(RealVariable r1,int i)
+    {
+        return RealVariable();
+
+    }
+
+    ostream& operator<< (ostream& os, const RealVariable& r) {
+        return (os << (r.n));
+    // equivalent to:
+    // os << c._re << '+' << c._im << 'i';
+    // return os;
+    }
+
 
 /**
  * Complex variable memeber function implementation
