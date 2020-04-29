@@ -22,6 +22,12 @@ double solve(const RealVariable x ) {return 1.1;}
         return RealVariable((r1.n)+x-1);
     }
     
+    const RealVariable operator+(const RealVariable& r1,const RealVariable& r2)
+    {
+        return RealVariable();
+    }
+
+    
     const RealVariable operator*(RealVariable r1,RealVariable r2)
     {
         return RealVariable();
@@ -46,14 +52,19 @@ double solve(const RealVariable x ) {return 1.1;}
     }
     
     
-    // const RealVariable operator/(RealVariable r)
-    // {
-    //     return RealVariable();
-    // }
-    // const RealVariable operator/(RealVariable r1,RealVariable r2)
-    // {
-    //     return RealVariable();
-    // }
+    const RealVariable operator/(double x, RealVariable r)
+    {
+        return RealVariable();
+    }
+    const RealVariable operator/(RealVariable r, double x)
+    {
+        return RealVariable();
+    }
+
+    const RealVariable operator/(RealVariable r1,RealVariable r2)
+    {
+        return RealVariable();
+    }
 
     const RealVariable operator==(const RealVariable& r1,const RealVariable& r2)
     {

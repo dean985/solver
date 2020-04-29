@@ -35,6 +35,7 @@ namespace solver{
     
     friend const RealVariable operator+(const double& x,const RealVariable& r);
     friend const RealVariable operator+(const RealVariable& r,const double& x);
+    friend const RealVariable operator+(const RealVariable& r1,const RealVariable& r2);
 
     friend const RealVariable operator-(double x, RealVariable r);
     friend const RealVariable operator-(RealVariable r, double x);
@@ -47,12 +48,11 @@ namespace solver{
     friend const RealVariable operator*(RealVariable r1,RealVariable r2);
     
 
-    // friend const RealVariable operator/(double x, RealVariable r);
-    // friend const RealVariable operator/(RealVariable r, double x);
-    // friend const RealVariable operator/(int x, RealVariable r);
-    
+    friend const RealVariable operator/(double x, RealVariable r);
+    friend const RealVariable operator/(RealVariable r, double x);
+    friend const RealVariable operator/(const RealVariable r1,RealVariable r2);
+
     //friend const RealVariable operator/(const RealVariable r);   
-    //friend const RealVariable operator/(const RealVariable r1,RealVariable r2);
     
     
     friend const RealVariable operator == (const RealVariable& r1,const RealVariable& r2);
