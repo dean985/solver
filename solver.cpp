@@ -1,6 +1,6 @@
 #include <iostream>
 #include "solver.hpp"
-
+#include <complex>
 using namespace std;
 namespace solver{
 
@@ -94,52 +94,97 @@ double solve(const RealVariable x ) {return 1.1;}
 /**
  * Complex variable memeber function implementation
  */
-
-
-    ComplexVariable operator+(const ComplexVariable& var, const complex<double>& c){
-        return ComplexVariable();
+    const ComplexVariable& operator+(const ComplexVariable& c1, const ComplexVariable& c2){
+        return c2;
     }
-    ComplexVariable operator+(const complex<double>& c, const ComplexVariable& var){
-        return ComplexVariable();
+    const ComplexVariable& operator+(const double num, const ComplexVariable& c){
+        return c;
     }
-    ComplexVariable operator+(const ComplexVariable& a, const ComplexVariable& b){
-        return ComplexVariable();
+    const ComplexVariable& operator+(const ComplexVariable& c, const double num){
+        return c;
     }
-
-    ComplexVariable operator-(const ComplexVariable& var, const complex<double>& c){
-        return ComplexVariable();
+    const ComplexVariable& operator+(const complex<double>& complex, const ComplexVariable& c){
+        return c;
     }
-    ComplexVariable operator-(const complex<double>& c ,const ComplexVariable& var){
-        return ComplexVariable();
-    }
-    ComplexVariable operator-(const ComplexVariable& a,const ComplexVariable& b){
-        return ComplexVariable();
+    const ComplexVariable& operator+(const ComplexVariable& c, const complex<double>& complex){
+        return c;
     }
 
-    ComplexVariable operator*(const ComplexVariable& var, const complex<double>& c){
-        return ComplexVariable();
+    const ComplexVariable& operator-(const ComplexVariable& c1, const ComplexVariable& c2){
+        return c1;
     }
-    ComplexVariable operator*(const complex<double>& c ,const ComplexVariable& var){
-        return ComplexVariable();
+    const ComplexVariable& operator-(const double num, const ComplexVariable& c){
+        return c;
     }
-    ComplexVariable operator*(const ComplexVariable& a,const ComplexVariable& b){
-        return ComplexVariable();
+    const ComplexVariable& operator-(const ComplexVariable& c, const double num){
+        return c;
     }
-
-    ComplexVariable operator/(const ComplexVariable& var, const complex<double> c){
-        return ComplexVariable();
+    const ComplexVariable& operator-(const complex<double>& complex, const ComplexVariable& c){
+        return c;
     }
-    ComplexVariable operator/(const ComplexVariable& a, const ComplexVariable& b){
-        return ComplexVariable();
-    }
-
-    ComplexVariable operator^(const ComplexVariable& var, const complex<double> c){
-        return ComplexVariable();
+    const ComplexVariable& operator-(const ComplexVariable& c, const complex<double>& complex){
+        return c;
     }
 
-    ComplexVariable operator==(const ComplexVariable& a,const ComplexVariable& b){
-        return ComplexVariable();
+    const ComplexVariable& operator*(const ComplexVariable& c1, const ComplexVariable& c2){
+        return c1;
+    }
+    const ComplexVariable& operator*(const double num, const ComplexVariable& c){
+        return c;
+    }
+    const ComplexVariable& operator*(const ComplexVariable& c, const double num){
+        return c;
+    }
+    const ComplexVariable& operator*(const complex<double>& complex, const ComplexVariable& c){
+        return c;
+    }
+    const ComplexVariable& operator*(const ComplexVariable& c, const complex<double>& complex){
+        return c;
     }
 
-double solve(ComplexVariable& ) {return 1.1;}
+    const ComplexVariable& operator/(const ComplexVariable& c1, const ComplexVariable& c2){
+        return c1;
+    }
+    const ComplexVariable& operator/(const double num, const ComplexVariable& c){
+        return c;
+    }
+    const ComplexVariable& operator/(const ComplexVariable& c, const double num){
+        return c;
+    }
+    const ComplexVariable& operator/(const complex<double>& complex, const ComplexVariable& c){
+        return c;
+    }
+    const ComplexVariable& operator/(const ComplexVariable& c, const complex<double>& complex){
+        return c;
+    }
+
+    const ComplexVariable& operator==(const ComplexVariable& c1, const ComplexVariable& c2){
+        return c1;
+    }
+    const ComplexVariable& operator==(const double num, const ComplexVariable& c){
+        return c;
+    }
+    const ComplexVariable& operator==(const ComplexVariable& c, const double num){
+        return c;
+    }
+    const ComplexVariable& operator==(const complex<double>& complex, const ComplexVariable& c){
+        return c;
+    }
+    const ComplexVariable& operator==(const ComplexVariable& c, const complex<double>& complex){
+        return c;
+    }
+
+    const ComplexVariable& operator^(const ComplexVariable& c, const double num){
+        return c;
+    }
+
+    ostream& operator<<(ostream& os, const ComplexVariable& c){
+        return os;
+    }
+
+
+
+    complex<double> solve(const ComplexVariable& var) {
+        return 0;
+    }
 }
