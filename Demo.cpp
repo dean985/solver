@@ -14,7 +14,10 @@ using namespace std;
 using solver::solve, solver::RealVariable, solver::ComplexVariable;
 
 int main() {
+    
     RealVariable x;
+
+   std::cout << 4*x << std::endl;
 
     cout << solve(2*x-4 == 10) << endl;  // 7
     cout << solve((x^2) == 16) << endl;   // 4 or -4

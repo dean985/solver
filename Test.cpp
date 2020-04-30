@@ -81,12 +81,13 @@ TEST_CASE("Tests for realvarible class")
     
 ///--------- RealVarible and  Comlex --------------    
 
-    //CHECK( (solve((x^2)+2*x+4==0 ) == -1 + 1.7320i) || (solve((x^2)+2*x+4==0 ) == -1 - 1.7320i));
-    //CHECK( solve(x^2 == -1 ) == i);
-    //CHECK( solve(x^2 == i ) == -1);
-   //CHECK( ((solve(((x^2)+1)^2) == 0 ) == -i) || (solve(((x^2)+1)^2) == 0 ) == i)));
+    CHECK(( (solve((x^2)-5*x+6 == 0) == 3 )|| (solve((x^2)-5*x+6 == 0) == 2)));
+    CHECK_THROWS( solve((((x^2)+1)^2) == 0 ));
+    CHECK_THROWS( solve((x^2) == -1 ));
+    CHECK_THROWS( solve((x^2)+2*x+4==0 ));
+
+    CHECK_THROWS( solve(x/2+(x^2)+4 == 0 ));
     
-    //CHECK( (solve(x/2+(x^2)+4 == 0 ) == -0.25 + 1.9843i) || (solve(x/2+(x^2)+4 == 0 ) == -0.25 - 1.9843i));
     CHECK(( (solve((x^2)/4+6 == 8 ) == 2.8284) || (solve((x^2)/4+6 == 8 ) == -2.8284)));
     CHECK(( (solve((x*x)/4+6 == 8 ) == 2.8284) || (solve((x*x)/4+6 == 8 ) == -2.8284)));
     CHECK(( (solve((4*(x^2))/4+6 == 8) == 1.4142) || (solve((4*(x^2))/4+6 == 8) == -1.4142)));

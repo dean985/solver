@@ -21,17 +21,15 @@ double solve(const RealVariable x ) {return 1.1;}
     {
         return RealVariable((r1.n)+x-1);
     }
-    
     const RealVariable operator+(const RealVariable& r1,const RealVariable& r2)
     {
-        return RealVariable();
+        return RealVariable(r1.n+r2.n );
     }
 
     
     const RealVariable operator*(RealVariable r1,RealVariable r2)
     {
-        return RealVariable();
-
+        return RealVariable(r1.n*r2.n);
     }
     const RealVariable operator*(RealVariable r)
     {
