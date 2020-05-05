@@ -72,14 +72,17 @@ namespace solver{
     
    
     class ComplexVariable{
-        private:
-        std::complex<double> c;
-        
+            public:
+            std::complex<double> _c1,_c2,_c3;
+            ComplexVariable() : _c1(0),
+                                _c2(1),
+                                _c3(0){};
 
-        public:
-            ComplexVariable(): c(1,0) {};
-
-            ComplexVariable(double x, double i): c(x,i){}
+            ComplexVariable(complex<double> c1, complex<double> c2, complex<double> c3) {
+                _c1 = c1;
+                _c2 = c2;
+                _c3 = c3;
+            }
 
             friend const ComplexVariable& operator+(const ComplexVariable& c1, const ComplexVariable& c2);
             friend const ComplexVariable& operator+(const double num, const ComplexVariable& c);
@@ -99,11 +102,11 @@ namespace solver{
             friend const ComplexVariable& operator*(const ComplexVariable& c, const complex<double>& complex);
             friend const ComplexVariable& operator*(const complex<double>& complex, const ComplexVariable& c);
 
-            friend const ComplexVariable& operator/(const ComplexVariable& c1, const ComplexVariable& c2);
-            friend const ComplexVariable& operator/(const double num, const ComplexVariable& c);
+            // friend const ComplexVariable& operator/(const ComplexVariable& c1, const ComplexVariable& c2);
+            // friend const ComplexVariable& operator/(const double num, const ComplexVariable& c);
             friend const ComplexVariable& operator/(const ComplexVariable& c, const double num);
-            friend const ComplexVariable& operator/(const ComplexVariable& c, const complex<double>& complex);
-            friend const ComplexVariable& operator/(const complex<double>& complex, const ComplexVariable& c);
+            // friend const ComplexVariable& operator/(const ComplexVariable& c, const complex<double>& complex);
+            // friend const ComplexVariable& operator/(const complex<double>& complex, const ComplexVariable& c);
 
             friend const ComplexVariable& operator==(const ComplexVariable& c1, const ComplexVariable& c2);
             friend const ComplexVariable& operator==(const double num, const ComplexVariable& c);
@@ -111,7 +114,7 @@ namespace solver{
             friend const ComplexVariable& operator==(const ComplexVariable& c, const complex<double>& complex);
             friend const ComplexVariable& operator==(const complex<double>& complex, const ComplexVariable& c);
 
-            friend const ComplexVariable& operator^(const ComplexVariable& c, const double num);
+            friend const ComplexVariable& operator^(const ComplexVariable& c, const int num);
 
             friend ostream& operator<<(ostream& os, const ComplexVariable& c);
 
