@@ -27,7 +27,7 @@ namespace solver{
         RealVariable()
         {
             a = 0;
-            b = 0;
+            b = 1;
             c = 0;
         }
         RealVariable(double _a,double _b,double _c)
@@ -36,26 +36,33 @@ namespace solver{
             b = _b;
             c = _c;
         }
+        RealVariable(RealVariable& r)
+        {
+            a = r.a;
+            b = r.b;
+            c = r.c;
+        }
+
         
 
     
     
-    friend  RealVariable operator+(const double& x,const RealVariable& r);
-    friend  RealVariable operator+(const RealVariable& r,const double& x);
-    friend  RealVariable operator+(const RealVariable& r1,const RealVariable& r2);
+    friend const RealVariable operator+(const double& x,const RealVariable& r);
+    friend const RealVariable operator+(const RealVariable& r,const double& x);
+    friend const RealVariable operator+(const RealVariable& r1,const RealVariable& r2);
 
-    friend  RealVariable operator-(double x, RealVariable r);
-    friend  RealVariable operator-(RealVariable r, double x);
-    friend  RealVariable operator-(RealVariable r1,RealVariable r2);
+    friend  RealVariable operator-(const double x,const RealVariable& r);
+    friend  RealVariable operator-(const RealVariable& r,const double x);
+    friend  RealVariable operator-(const RealVariable& r1,const RealVariable& r2);
 
-    friend  RealVariable operator*(double x, RealVariable& r);
-    friend  RealVariable operator*(RealVariable& r, double x);
-    //friend const RealVariable operator*(RealVariable r1,RealVariable r2);
+    friend const RealVariable operator*(const double& x,const RealVariable& r);
+    friend const RealVariable operator*(const RealVariable& r,const double& x);
+    //friend const RealVariable operator*(const RealVariable& r1,const RealVariable& r2);
     
 
-    friend  RealVariable operator/(double x, RealVariable r);
-    friend  RealVariable operator/(RealVariable r, double x);
-    friend  RealVariable operator/(const RealVariable r1,RealVariable r2);
+ //   friend  RealVariable operator/(double x, RealVariable r);
+     friend const RealVariable operator/(RealVariable r, double x);
+    // friend  RealVariable operator/(const RealVariable r1,RealVariable r2);
 
     //friend const RealVariable operator/(const RealVariable r);   
     
@@ -64,7 +71,7 @@ namespace solver{
     friend  RealVariable operator == (const RealVariable& r1,const double& r2);
 
 
-    friend  RealVariable operator^(RealVariable r1,int i);
+    friend const RealVariable operator^(RealVariable r1,int i);
     friend ostream& operator<< (ostream& os, const RealVariable& r);
 
 

@@ -13,50 +13,69 @@ double solve(const RealVariable x ) {return 1.1;}
  *
  */
 
-     RealVariable operator+(RealVariable& r1,const double& x)
+    const RealVariable operator+(const RealVariable& r1,const double& x)
     {
-        r1.c = r1.c + x;
-        return r1;
+        
+        return RealVariable(r1.a , r1.b, r1.c + x);
     }
-     RealVariable operator+(const double& x,RealVariable& r1)
+    const RealVariable operator+(const double& x,const RealVariable& r1)
     {
         return r1+x;
     }
     
-     RealVariable operator+(const RealVariable& r1,const RealVariable& r2)
+    const RealVariable operator+(const RealVariable& r1,const RealVariable& r2)
     {
         return RealVariable(r1.a + r2.a ,r1.b + r2.b,r1.c + r2.c);
     }
 
 
-     RealVariable operator*(RealVariable& r1,double r)
+    const RealVariable operator*(const double& x,const RealVariable& r1)
     {
-        r1.b += r;
-        return r1;
+        return RealVariable(r1.a, r1.b * x, r1.c);
     }
-     RealVariable operator*(double r,RealVariable& r1)
+    const RealVariable operator*(const RealVariable& r1,const double& x)
     {
-        r1.b += r;
-        return r1;
+      return RealVariable(r1.a, r1.b * x, r1.c);
+
     }
+    // const  RealVariable operator*(const RealVariable& r1,const RealVariable& r2)
+    // {
+    //     return r1;
+    // }
 
 
-     RealVariable operator-(double x, RealVariable r1)
+     RealVariable operator-(const double x,const RealVariable& r1)
     {
-        r1.c -= x;
-        return r1;
+     
+        return RealVariable(r1.a, r1.b , r1.c - x);
     }
-     RealVariable operator-(RealVariable r, double x)
+     RealVariable operator-(const RealVariable& r,const double x)
     {
         return x-r;    
     }
-     RealVariable operator-(RealVariable r1,RealVariable r2)
+     RealVariable operator-(const RealVariable& r1,const RealVariable& r2)
     {
-        r1.a -= r2.a;
-        r1.b -= r2.b;
-        r1.c -= r2.c;
 
-        return r1;  
+        RealVariable real1;
+        real1= r1;
+        RealVariable real2;
+        real2 = r2;
+
+        if(r1.a == 0 && r1.b ==0 && r1.c == 0){
+                      //Copy content of x into real1
+            real1.b = 1;
+        }
+        
+        if(r2.a == 0 && r2.b ==0 && r2.c == 0){
+            real2.b = 1;
+        }
+
+        real1.a -= real2.a;
+        real1.b -= real2.b;
+        real1.c -= real2.c;
+    
+        return real1;
+       // return RealVariable(r1.a - r2.a, r1.b - r2.b, r1.c - r2.c);
     }
     
     
@@ -64,10 +83,19 @@ double solve(const RealVariable x ) {return 1.1;}
     // {
     //     return RealVariable(x/r.n);
     // }
-    // const RealVariable operator/(RealVariable r, double x)
-    // {
-    //     return RealVariable(r.n/x);
-    // }
+    const RealVariable operator/(RealVariable r, double x)
+    {
+        if(x == 0)
+        {
+            throw runtime_error("devision by 0 is unavilible");
+        }
+        if(r.a == 0 && r.b ==0 && r.c == 0)
+        {
+            r.b = 1;
+        }
+        
+        return RealVariable(r.a,r.b/x,r.c);
+    }
 
     // const RealVariable operator/(RealVariable r1,RealVariable r2)
     // {
@@ -85,17 +113,26 @@ double solve(const RealVariable x ) {return 1.1;}
 
         return r1-r2;
     }
-
-     RealVariable operator^(RealVariable r1,int i)
+    
+     RealVariable operator==(const double& r2,const RealVariable& r1)
     {
+
+        return r1-r2;
+    }
+
+    const RealVariable operator^(RealVariable r1,int i)
+    {
+        //std::cout << "assetr " << r1 << std::endl;
         if(i == 2 && r1.a == 0)
         {
             r1.a += 1;
+            r1.b = 0;
+            return r1;
         }
-        if(i == 1 && r1.b == 0)
+        else if(i == 1)
         {
 
-            r1.b += 1;
+            return r1;
         }
         else
         {
