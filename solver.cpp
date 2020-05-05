@@ -13,76 +13,100 @@ double solve(const RealVariable x ) {return 1.1;}
  *
  */
 
-    const RealVariable operator+(const RealVariable& r1,const double& x)
+     RealVariable operator+(RealVariable& r1,const double& x)
     {
-        return RealVariable((r1.n)+x-1);
+        r1.c = r1.c + x;
+        return r1;
     }
-    const RealVariable operator+(const double& x,const RealVariable& r1)
+     RealVariable operator+(const double& x,RealVariable& r1)
     {
-        return RealVariable((r1.n)+x-1);
-    }
-    const RealVariable operator+(const RealVariable& r1,const RealVariable& r2)
-    {
-        return RealVariable(r1.n+r2.n );
-    }
-
-    
-    const RealVariable operator*(RealVariable r1,RealVariable r2)
-    {
-        return RealVariable(r1.n*r2.n);
-    }
-    const RealVariable operator*(RealVariable r)
-    {
-        return RealVariable();
-    }
-
-    const RealVariable operator-(double x, RealVariable r)
-    {
-        return RealVariable();
-    }
-    const RealVariable operator-(RealVariable r, double x)
-    {
-        return RealVariable();    
-    }
-    const RealVariable operator-(RealVariable r1,RealVariable r2)
-    {
-        return RealVariable();    
+        return r1+x;
     }
     
+     RealVariable operator+(const RealVariable& r1,const RealVariable& r2)
+    {
+        return RealVariable(r1.a + r2.a ,r1.b + r2.b,r1.c + r2.c);
+    }
+
+
+     RealVariable operator*(RealVariable& r1,double r)
+    {
+        r1.b += r;
+        return r1;
+    }
+     RealVariable operator*(double r,RealVariable& r1)
+    {
+        r1.b += r;
+        return r1;
+    }
+
+
+     RealVariable operator-(double x, RealVariable r1)
+    {
+        r1.c -= x;
+        return r1;
+    }
+     RealVariable operator-(RealVariable r, double x)
+    {
+        return x-r;    
+    }
+     RealVariable operator-(RealVariable r1,RealVariable r2)
+    {
+        r1.a -= r2.a;
+        r1.b -= r2.b;
+        r1.c -= r2.c;
+
+        return r1;  
+    }
     
-    const RealVariable operator/(double x, RealVariable r)
-    {
-        return RealVariable();
-    }
-    const RealVariable operator/(RealVariable r, double x)
-    {
-        return RealVariable();
-    }
+    
+    // const RealVariable operator/(double x, RealVariable r)
+    // {
+    //     return RealVariable(x/r.n);
+    // }
+    // const RealVariable operator/(RealVariable r, double x)
+    // {
+    //     return RealVariable(r.n/x);
+    // }
 
-    const RealVariable operator/(RealVariable r1,RealVariable r2)
-    {
-        return RealVariable();
-    }
+    // const RealVariable operator/(RealVariable r1,RealVariable r2)
+    // {
+    //     return RealVariable(r1.n/r2.n);
+    // }
 
-    const RealVariable operator==(const RealVariable& r1,const RealVariable& r2)
+     RealVariable operator==(const RealVariable& r1,const RealVariable& r2)
     {
-        return RealVariable();
+        return r1-r2;
 
     }
     
-    const RealVariable operator==(const RealVariable& r1,const double& r2)
+     RealVariable operator==(const RealVariable& r1,const double& r2)
     {
-        return RealVariable();
+
+        return r1-r2;
     }
 
-    const RealVariable operator^(RealVariable r1,int i)
+     RealVariable operator^(RealVariable r1,int i)
     {
-        return RealVariable();
+        if(i == 2 && r1.a == 0)
+        {
+            r1.a += 1;
+        }
+        if(i == 1 && r1.b == 0)
+        {
+
+            r1.b += 1;
+        }
+        else
+        {
+         //   throw exception();
+        }
+        return r1;
 
     }
 
     ostream& operator<< (ostream& os, const RealVariable& r) {
-        return (os << (r.n));
+        return (os <<" a = " <<(r.a) << " b = "<<r.b << " c = "<<r.c);
     // equivalent to:
     // os << c._re << '+' << c._im << 'i';
     // return os;
