@@ -5,7 +5,53 @@ using namespace std;
 namespace solver{
 
 
-double solve(const RealVariable x ) {return 1.1;}
+double solve(RealVariable x ) 
+{
+    double sum = 0;
+    if(x.a == 0 && x.b == 0)
+    {
+        throw runtime_error("no x to solve");
+    }
+    else 
+    if(x.a == 0 && x.b != 0)
+    {
+        sum = (-1*x.c)/x.b;
+            
+
+        
+    }
+    else if(x.b == 0 && x.c != 0&& x.a != 0)
+    {
+        sum = (-1*x.c)/x.a;
+      if (sum <0){
+            sum = 0;
+            throw runtime_error("cant squer -1 in the real world");
+        }
+         sum = sqrt(sum);
+    }
+    else {
+        sum = pow(x.b,2) - (4*x.a*x.c);
+        if (sum <0){
+            sum = 0;
+            throw runtime_error("cant squer -1 in the real world");
+        }
+        else
+        {
+            
+            sum = -1*x.b + sqrt(sum);
+
+            sum = sum/(2*x.a);
+            
+        }
+    }
+        if((sum-floor(sum))<0.5)
+            return floor (sum);
+        if((sum-floor(sum))>0.5)
+            return floor (sum+0.5);
+        else
+             return sum;
+    
+}
 
 
 /*
@@ -31,17 +77,26 @@ double solve(const RealVariable x ) {return 1.1;}
 
     const RealVariable operator*(const double& x,const RealVariable& r1)
     {
-        return RealVariable(r1.a, r1.b * x, r1.c);
+        if(r1.a != 0){
+            return RealVariable(r1.a * x, r1.b, r1.c);
+        }
+        if(r1.b != 0){
+            return RealVariable(r1.a, r1.b * x, r1.c);
+        }
+        return RealVariable(r1.a, r1.b, r1.c);
+        
     }
     const RealVariable operator*(const RealVariable& r1,const double& x)
     {
-      return RealVariable(r1.a, r1.b * x, r1.c);
-
+        if(r1.a != 0){
+            return RealVariable(r1.a * x, r1.b, r1.c);
+        }
+        if(r1.b != 0){
+            return RealVariable(r1.a, r1.b * x, r1.c);
+        }
+        return RealVariable(r1.a, r1.b, r1.c);
+        
     }
-    // const  RealVariable operator*(const RealVariable& r1,const RealVariable& r2)
-    // {
-    //     return r1;
-    // }
 
 
      RealVariable operator-(const double x,const RealVariable& r1)
@@ -78,11 +133,7 @@ double solve(const RealVariable x ) {return 1.1;}
        // return RealVariable(r1.a - r2.a, r1.b - r2.b, r1.c - r2.c);
     }
     
-    
-    // const RealVariable operator/(double x, RealVariable r)
-    // {
-    //     return RealVariable(x/r.n);
-    // }
+
     const RealVariable operator/(RealVariable r, double x)
     {
         if(x == 0)
@@ -97,10 +148,7 @@ double solve(const RealVariable x ) {return 1.1;}
         return RealVariable(r.a,r.b/x,r.c);
     }
 
-    // const RealVariable operator/(RealVariable r1,RealVariable r2)
-    // {
-    //     return RealVariable(r1.n/r2.n);
-    // }
+
 
      RealVariable operator==(const RealVariable& r1,const RealVariable& r2)
     {
